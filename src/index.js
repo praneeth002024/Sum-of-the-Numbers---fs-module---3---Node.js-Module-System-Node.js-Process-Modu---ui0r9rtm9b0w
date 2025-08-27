@@ -19,13 +19,17 @@
 //   console.error("Error processing file:", err);
 // }
 const fs = require("fs");
-const arr = fs.readFileSync(`${__dirname}/input.txt`, "utf-8").split("\n");
-let sum = 0;
-arr.forEach((item) => {
-  const amount = item.split(" ")[1];  // take the number part
-  sum += Number(amount);              // convert to number and add
-});
-fs.writeFileSync("output.txt", `${sum}`)
+try {
+    const arr = fs.readFileSync(`${__dirname}/input.txt`, "utf-8").split("\n");
+    let sum = 0;
+    arr.forEach((item) => {
+        const amount = item.split(" ")[1];  // take the number part
+        sum += Number(amount);              // convert to number and add
+    });
+    fs.writeFileSync(`${__dirname}/output.txt`, `${sum}`);
+} catch (error) {
+    console.error("Error:", error.message);
+}
 
 
 
