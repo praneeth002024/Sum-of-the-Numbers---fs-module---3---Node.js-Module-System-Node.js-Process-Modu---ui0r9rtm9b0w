@@ -19,15 +19,13 @@
 //   console.error("Error processing file:", err);
 // }
 const fs = require("fs");
-const arr = ["apple 10", "banana 20", "cherry 30"];
+const arr = fs.readFileSync(`${__dirname}/input.txt`, "utf-8").split("\n");
 let sum = 0;
 arr.forEach((item) => {
   const amount = item.split(" ")[1];  // take the number part
   sum += Number(amount);              // convert to number and add
 });
-fs.writeFileSync("output.txt", `${sum}`);
-console.log("Sum written to output.txt:", sum);
-
+fs.writeFileSync("output.txt", `${sum}`)
 
 
 
